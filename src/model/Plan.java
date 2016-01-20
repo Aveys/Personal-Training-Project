@@ -1,7 +1,6 @@
 package model;
 
 import java.io.Serializable;
-import java.util.ArrayList;
 import java.util.List;
 
 /**
@@ -12,7 +11,7 @@ public class Plan implements Serializable{
     private String desc;
     private String domain;
     private String totalTime;
-    private List<Exercice> exercices;
+    private List<Exercise> exercises;
 
 
     public Plan() {
@@ -51,12 +50,12 @@ public class Plan implements Serializable{
         this.totalTime = totalTime;
     }
 
-    public List<Exercice> getExercices() {
-        return exercices;
+    public List<Exercise> getExercises() {
+        return exercises;
     }
 
-    public void setExercices(List<Exercice> exercices) {
-        this.exercices = exercices;
+    public void setExercises(List<Exercise> exercises) {
+        this.exercises = exercises;
     }
 
     @Override
@@ -66,7 +65,7 @@ public class Plan implements Serializable{
         sb.append(", desc='").append(desc).append('\'');
         sb.append(", domain='").append(domain).append('\'');
         sb.append(", totalTime='").append(totalTime).append('\'');
-        sb.append(", exercices=").append(exercices);
+        sb.append(", exercises=").append(exercises);
         sb.append('}');
         return sb.toString();
     }

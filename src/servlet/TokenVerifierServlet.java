@@ -26,7 +26,6 @@ public class TokenVerifierServlet extends HttpServlet {
 		Map<String, String> id;
 		if(token!=null){
 			if((id=GoogleTokenVerifier.verifyToken(token))!=null){
-				System.out.println("map result : "+id);
 				response.getWriter().write("{" +
 						"    \"status\":\"success\"," +
 						"    \"name\":\""+id.get("name")+"\"," +

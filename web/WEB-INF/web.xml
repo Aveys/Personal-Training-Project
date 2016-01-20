@@ -8,13 +8,10 @@
         <servlet-name>welcomeTextServlet</servlet-name>
         <servlet-class>servlet.WelcomeTextServlet</servlet-class>
     </servlet>
-
     <servlet-mapping>
     <servlet-name>welcomeTextServlet</servlet-name>
     <url-pattern>/welcomeText</url-pattern>
     </servlet-mapping>
-
-
     <servlet>
         <servlet-name>addTrainingServlet</servlet-name>
         <servlet-class>servlet.AddTrainingServlet</servlet-class>
@@ -24,7 +21,6 @@
         <servlet-name>addTrainingServlet</servlet-name>
         <url-pattern>/addTraining</url-pattern>
     </servlet-mapping>
-
     <servlet>
         <servlet-name>TokenVerifier</servlet-name>
         <servlet-class>servlet.TokenVerifierServlet</servlet-class>
@@ -33,16 +29,32 @@
         <servlet-name>TokenVerifier</servlet-name>
         <url-pattern>/tokenVerifier</url-pattern>
     </servlet-mapping>
-
-
     <servlet>
+        <servlet-name>InitServlet</servlet-name>
+        <servlet-class>servlet.initServlet</servlet-class>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>InitServlet</servlet-name>
+        <url-pattern>/init</url-pattern>
+    </servlet-mapping>
+    <servlet>
+        <servlet-name>SearchServlet</servlet-name>
+        <servlet-class>servlet.SearchServlet</servlet-class>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>SearchServlet</servlet-name>
+        <url-pattern>/search</url-pattern>
+    </servlet-mapping>
+
+
+    <!--<servlet>
         <servlet-name>Exercises</servlet-name>
         <servlet-class>servlet.GetExercisesServlet</servlet-class>
     </servlet>
     <servlet-mapping>
         <servlet-name>Exercises</servlet-name>
         <url-pattern>/getExs</url-pattern>
-    </servlet-mapping>
+    </servlet-mapping>-->
 
 
 

@@ -5,13 +5,13 @@ import java.io.Serializable;
 /**
  * Created by Max TOMPOUCE on 20/01/2016.
  */
-public class Exercice implements Serializable {
+public class Exercise implements Serializable {
     private String title;
     private String desc;
     private String length;
     private String row;
 
-    public Exercice() {
+    public Exercise() {
     }
 
     public String getTitle() {
@@ -48,7 +48,7 @@ public class Exercice implements Serializable {
 
     @Override
     public String toString() {
-        final StringBuffer sb = new StringBuffer("Exercice{");
+        final StringBuffer sb = new StringBuffer("Exercise{");
         sb.append("title='").append(title).append('\'');
         sb.append(", desc='").append(desc).append('\'');
         sb.append(", length='").append(length).append('\'');
