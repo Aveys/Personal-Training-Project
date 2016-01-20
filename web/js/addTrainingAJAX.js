@@ -6,6 +6,7 @@
 
 $('#btn-exercise').click(function() {
     var data={};
+    data.token=id_token;
     data.type="exercise";
     data.title=$('#titleDescription').val();
     data.desc=$('#exerciseDescription').val();

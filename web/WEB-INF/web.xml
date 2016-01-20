@@ -19,10 +19,18 @@
         <servlet-name>addTrainingServlet</servlet-name>
         <servlet-class>servlet.AddTrainingServlet</servlet-class>
     </servlet>
-
     <servlet-mapping>
         <servlet-name>addTrainingServlet</servlet-name>
         <url-pattern>/addTraining</url-pattern>
+    </servlet-mapping>
+
+    <servlet>
+        <servlet-name>TokenVerifier</servlet-name>
+        <servlet-class>servlet.TokenVerifier</servlet-class>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>TokenVerifier</servlet-name>
+        <url-pattern>/tokenVerifier</url-pattern>
     </servlet-mapping>
 
 </web-app>
