@@ -39,23 +39,9 @@
         </div>
         <!-- Collect the nav links, forms, and other content for toggling -->
         <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
-            <ul class="nav navbar-nav pull-right">
+            <ul id="navbar-list" class="nav navbar-nav pull-right">
                 <li>
-                    <div id="" class="g-signin2" data-onsuccess="onSignIn" data-theme="dark"></div>
-                    <script>
-                        var id_token;
-                        function onSignIn(googleUser) {
-                            // Useful data for your client-side scripts:
-                            id_token = googleUser.getAuthResponse().id_token;
-                            /*var profile = googleUser.getBasicProfile();
-                            console.log("ID: " + profile.getId()); // Don't send this directly to your server!
-                            console.log("Name: " + profile.getName());
-                            console.log("Image URL: " + profile.getImageUrl());
-                            console.log("Email: " + profile.getEmail());*/
-
-
-                        };
-                    </script>
+                    <div id="google-button" class="g-signin2" data-onsuccess="onSignIn" data-theme="dark"></div>
                 </li>
             </ul>
         </div>
@@ -97,6 +83,7 @@
 </footer>
 <script src="js/jquery-1.11.1.min.js"></script>
 <script src="js/bootstrap.min.js"></script>
+<script src="js/navbarAjax.js"></script>
 <script src="js/welcomeAJAX.js"></script>
 </body>
 </html>
