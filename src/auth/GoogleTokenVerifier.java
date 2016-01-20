@@ -30,7 +30,6 @@ public class GoogleTokenVerifier {
 
 	public static Map<String,String> verifyToken(String token) {
 
-		System.out.println("Token recu : "+token);
 
 		Cache cache = null;
 		HashMap<String,String> map = new HashMap<>();
@@ -52,7 +51,7 @@ public class GoogleTokenVerifier {
 				ObjectMapper m = new ObjectMapper();
 				JsonNode root =m.readTree((String)cache.get(token));
 				map.put("name",root.path("name").textValue());
-				map.put("mail",root.path("mail").textValue());
+				map.put("mail",root.path("email").textValue());
 				return map;
 
 			} catch (IOException e) {
@@ -84,7 +83,7 @@ public class GoogleTokenVerifier {
 				String name = (String) payload.get("name");
 				map.put("mail",email);
 				map.put("name",name);
-				String json = "{\"name\":\"name\",\"email\":\"mail\"}";
+				String json = "{\"name\":\""+name+"\",\"email\":\""+email+"\"}";
 				cache.put(token,json);
 				return map;
 

@@ -27,7 +27,7 @@
 
     <servlet>
         <servlet-name>TokenVerifier</servlet-name>
-        <servlet-class>servlet.TokenVerifier</servlet-class>
+        <servlet-class>servlet.TokenVerifierServlet</servlet-class>
     </servlet>
     <servlet-mapping>
         <servlet-name>TokenVerifier</servlet-name>
