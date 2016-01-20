@@ -5,5 +5,7 @@
 $(document).ready(function () {
     $.get("/welcomeText", function (data) {
         $("#welcomeContent").text(data.message);
-    })
+    });
+
+
 });

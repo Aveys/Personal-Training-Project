@@ -54,6 +54,6 @@ public class WelcomeTextServlet extends HttpServlet {
 			message=msgDatastore;
 		}
 		resp.setHeader("Content-Type","application/json");
-		resp.getWriter().write("{\"message\":\"Bienvenue sur ce fantastique site web qui tue vos chatons !!\"}");
+		resp.getWriter().write("{\"message\":\""+message+"\"}");
 	}
 }
