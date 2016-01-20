@@ -34,14 +34,13 @@
 </nav>
 <!-- ------------------------------------------- HEADER ZONE END ------------------------------------------- -->
 
-<form id=formAddTraining" role="form" method="post">
     <div class="row" style="margin-bottom:10px">
         <div class=" col-md-1 col-sm-0 col-xs-0 " ></div>
         <div class=" col-md-2 col-sm-2 col-xs-12 ">
-            <label for="inputTitle">Title</label>
+            <label for="planTitle">Title</label>
         </div>
         <div class=" col-md-6 col-sm-6 col-xs-12 ">
-            <input type="text" class="form-control" id="inputTitle" placeholder="Enter your Training plan title">
+            <input type="text" class="form-control" id="planTitle" placeholder="Enter your Training plan title">
         </div>
         <div class=" col-md-3 col-sm-4 hidden-xs">
             <div class=" col-md-4 col-sm-4 hidden-xs">
@@ -52,21 +51,21 @@
     <div class="row">
         <div class=" col-md-1 col-sm-0 col-xs-0 " ></div>
         <div class=" col-md-2 col-sm-2 col-xs-12 ">
-            <label for="inputDescription">Description</label>
+            <label for="planDesc">Description</label>
         </div>
         <div class=" col-md-6 col-sm-6 col-xs-12 ">
             <!--<input type="email" class="form-control" id="inputDescription" placeholder="Enter your Training plan Description">-->
-            <textarea id="inputDescription" class="form-control" rows="4"></textarea>
+            <textarea id="planDesc" class="form-control" rows="4"></textarea>
         </div>
     </div>
     <div class="row" style="margin-top:10px">
         <div class=" col-md-1 col-sm-0 col-xs-0 " ></div>
         <div class=" col-md-2 col-sm-2 col-xs-12 ">
-            <label for="inputDescription">Domain</label>
+            <label for="domain">Domain</label>
         </div>
         <div class=" col-md-6 col-sm-6 col-xs-12 " >
             <p>
-                <select id="e1" class="select2-container populate" style="width:100%">
+                <select id="domain" class="select2-container populate" style="width:100%">
                     <option value="Running">Running</option>
                     <option value="Volleyball">Volleyball</option>
                     <option value="Boxe">Boxe</option>
@@ -89,10 +88,10 @@
                 <div class="row">
                     <div class=" col-md-2 col-sm-0 col-xs-0 " ></div>
                     <div class=" col-md-2 col-sm-2 col-xs-12 ">
-                        <label for="titleDescription">Ex. Title</label>
+                        <label for="exTitle">Ex. Title</label>
                     </div>
                     <div class=" col-md-6 col-sm-6 col-xs-12 ">
-                        <input type="text" class="form-control" id="titleDescription" placeholder="Enter your exercise title">
+                        <input type="text" class="form-control" id="exTitle" placeholder="Enter your exercise title">
                     </div>
                     <div class=" col-md-2 col-sm-4 col-xs-12 ">
                         <div class="input-group">
@@ -108,11 +107,11 @@
                 <div class="row" style="margin-top:10px">
                     <div class=" col-md-2 col-sm-0 col-xs-0 " ></div>
                     <div class=" col-md-2 col-sm-2 col-xs-12 ">
-                        <label for="exerciseDescription">Ex. Description</label>
+                        <label for="exDesc">Ex. Description</label>
                     </div>
                     <div class=" col-md-6 col-sm-6 col-xs-12 ">
                         <!--<input type="email" class="form-control" id="exerciseDescription" placeholder="Enter your exercise title">-->
-                        <textarea id="exerciseDescription" class="form-control" rows="4"></textarea>
+                        <textarea id="exDesc" class="form-control" rows="4"></textarea>
                     </div>
                     <div class=" col-md-2 col-sm-4 hidden-xs">
                         <h1 style="text-align: center;"> <span class="glyphicon glyphicon-time"></span> </h1>
@@ -160,12 +159,9 @@
     <div class=" col-md-2 ol-sm-0 col-xs-0 " ></div>
     <div class=" col-md-10 ol-sm-5 col-xs-0 " ></div>
     <div class=" col-md-2 ol-sm-5 col-xs-12 text-center" >
-        <button type="submit" class="btn btn-danger btn-sm"> <span class="glyphicon glyphicon-remove"></span> </button>
-        <button id="trainingSubmit" type="submit" class="btn btn-success btn-lg"> <span class="glyphicon glyphicon-ok"></span> </button>
+        <button class="btn btn-danger btn-sm"> <span class="glyphicon glyphicon-remove"></span> </button>
+        <button id="trainingSubmit" class="btn btn-success btn-lg"> <span class="glyphicon glyphicon-ok"></span> </button>
     </div>
-
-
-</form>
 
 
 

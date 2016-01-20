@@ -19,6 +19,7 @@
         <servlet-name>addTrainingServlet</servlet-name>
         <servlet-class>servlet.AddTrainingServlet</servlet-class>
     </servlet>
+
     <servlet-mapping>
         <servlet-name>addTrainingServlet</servlet-name>
         <url-pattern>/addTraining</url-pattern>
@@ -32,5 +33,17 @@
         <servlet-name>TokenVerifier</servlet-name>
         <url-pattern>/tokenVerifier</url-pattern>
     </servlet-mapping>
+
+
+    <servlet>
+        <servlet-name>Exercises</servlet-name>
+        <servlet-class>servlet.GetExercisesServlet</servlet-class>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>Exercises</servlet-name>
+        <url-pattern>/getExs</url-pattern>
+    </servlet-mapping>
+
+
 
 </web-app>
