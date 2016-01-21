@@ -90,6 +90,7 @@ $('#trainingSubmit').click(function() {
         success: function()
         {
             alert('Training Plan added !');
+            window.location.reload(true);
         }
     });
 });
