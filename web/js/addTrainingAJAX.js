@@ -65,32 +65,53 @@ $('#btn-exercise').click(function() {
 
 //AJOUT D'UN PLAN
 $('#trainingSubmit').click(function() {
-    var data={};
-    data.title=$('#planTitle').val();
-    data.desc=$('#planDesc').val();
-    data.domain=$('#domain').val();
-    data.totalTime=moment.duration(($('#totalTimeValue').text())).asSeconds();
-    data.exercises=[];
-
-    $('.valueRow').each(function(i, obj) {
-        var exercise = {};
-        exercise.title = $(this).find(".valueTitle").html();
-        exercise.desc = $(this).find(".valueDesc").html();
-        exercise.length = $(this).find(".valueLength").html();
-        exercise.row = $(this).find(".valueLoop").html();
-        console.log("Ajout ex :" + exercise);
-        data.exercises.push(exercise);
-    });
-
+    //GESTION TOKEN
+    data = {};
+    data.tokenID=id_token;
     $.ajax
     ({
-        url: '/addQueue',
-        data: {"PARAM":JSON.stringify(data)},
+        url: '/tokenVerifier',
+        data: data,
         type: 'post',
-        success: function()
+        success: function(result)
         {
-            alert('Training Plan added !');
-            window.location.reload(true);
+            var data={};
+            data.email=result.mail;
+            data.plans=[];
+            var plan={};
+            plan.title=$('#planTitle').val();
+            plan.desc=$('#planDesc').val();
+            plan.domain=$('#domain').val();
+            plan.totalTime=moment.duration(($('#totalTimeValue').text())).asSeconds();
+            plan.exercises=[];
+
+            $('.valueRow').each(function(i, obj) {
+                var exercise = {};
+                exercise.title = $(this).find(".valueTitle").html();
+                exercise.desc = $(this).find(".valueDesc").html();
+                exercise.length = $(this).find(".valueLength").html();
+                exercise.row = $(this).find(".valueLoop").html();
+                console.log("Ajout ex :" + exercise);
+                plan.exercises.push(exercise);
+            });
+            data.plans.push(plan);
+
+            console.log(data);
+
+            $.ajax
+            ({
+                url: '/addQueue',
+                data: {"PARAM":JSON.stringify(data)},
+                type: 'post',
+                success: function()
+                {
+                    alert('Training Plan added !');
+                    window.location.reload(true);
+                }
+            });
+        },
+        error: function () {
+            alert("Token Invalid");
         }
     });
 });

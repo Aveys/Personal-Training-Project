@@ -7,6 +7,7 @@ import com.google.appengine.api.datastore.Key;
 import com.google.gson.Gson;
 import model.Exercise;
 import model.Plan;
+import model.User;
 
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
@@ -29,36 +30,40 @@ public class AddTrainingServlet extends HttpServlet {
         DatastoreService datastore = DatastoreServiceFactory
                 .getDatastoreService();
         Gson gson = new Gson();
-        Plan pl = gson.fromJson(req.getParameter("PARAM"),Plan.class);
+        User u = gson.fromJson(req.getParameter("PARAM"), User.class);
 
+        Entity user = new Entity("User");
+        user.setProperty("email",u.getEmail());
 
-        Entity plan = new Entity("Plan");
+        List<Plan> listPlan = u.getPlans();
+        Key userKey=datastore.put(user);
 
-        plan.setProperty("title", pl.getTitle());
-        plan.setProperty("description", pl.getDesc());
-        plan.setProperty("domain", pl.getDomain());
-        plan.setProperty("totalLength", pl.getTotalTime());
-        System.out.println(pl.getTotalTime());
+        for (Plan pl: listPlan) {
+            Entity plan = new Entity("Plan", userKey);
 
-        Key planKey=datastore.put(plan);
+            plan.setProperty("title", pl.getTitle());
+            plan.setProperty("description", pl.getDesc());
+            plan.setProperty("domain", pl.getDomain());
+            plan.setProperty("totalLength", pl.getTotalTime());
+            System.out.println(pl.getTotalTime());
 
-        List<Exercise> listEx = pl.getExercises();
-        Entity exercise;
+            Key planKey=datastore.put(plan);
 
-        for (Exercise ex : listEx) {
-            exercise = new Entity("Exercise", planKey);
-            exercise.setProperty("title", ex.getTitle());
-            exercise.setProperty("description", ex.getDesc());
-            String length = ex.getLength();
-            String[] splitStr = length.split(":");
-            Integer seconds = Integer.parseInt(splitStr[0])*60 + Integer.parseInt(splitStr[1]);
-            exercise.setProperty("length", seconds);
-            exercise.setProperty("row", ex.getRow());
-            datastore.put(exercise);
+            List<Exercise> listEx = pl.getExercises();
+            Entity exercise;
+
+            for (Exercise ex : listEx) {
+                exercise = new Entity("Exercise", planKey);
+                exercise.setProperty("title", ex.getTitle());
+                exercise.setProperty("description", ex.getDesc());
+                String length = ex.getLength();
+                String[] splitStr = length.split(":");
+                Integer seconds = Integer.parseInt(splitStr[0])*60 + Integer.parseInt(splitStr[1]);
+                exercise.setProperty("length", seconds);
+                exercise.setProperty("row", ex.getRow());
+                datastore.put(exercise);
+            }
         }
-
-
-
 
     }
 }
