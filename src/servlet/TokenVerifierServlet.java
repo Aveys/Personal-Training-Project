@@ -38,6 +38,5 @@ public class TokenVerifierServlet extends HttpServlet {
 		}
 		else
 			response.getWriter().write("{\"status\":\"failed\",\"message\":\"tokenid is null or invalid\"}");
-
 	}
 }

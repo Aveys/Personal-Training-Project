@@ -45,6 +45,14 @@
         <servlet-name>SearchServlet</servlet-name>
         <url-pattern>/search</url-pattern>
     </servlet-mapping>
+    <servlet>
+        <servlet-name>RSSReaderServlet</servlet-name>
+        <servlet-class>servlet.RSSReaderServlet</servlet-class>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>RSSReaderServlet</servlet-name>
+        <url-pattern>/rss</url-pattern>
+    </servlet-mapping>
 
 
     <!--<servlet>

@@ -39,7 +39,7 @@ public class AddTrainingServlet extends HttpServlet {
         plan.setProperty("domain", pl.getDomain());
         plan.setProperty("totalLength", pl.getTotalTime());
 
-       Key planKey=datastore.put(plan);
+        Key planKey=datastore.put(plan);
 
         List<Exercise> listEx = pl.getExercises();
         Entity exercise;

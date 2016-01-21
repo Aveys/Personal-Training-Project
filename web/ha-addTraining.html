@@ -4,9 +4,12 @@
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="google-signin-scope" content="profile email">
+    <meta name="google-signin-client_id" content="418187800373-a5n7urf2liqa6uahdadtj75oq5k2q3up.apps.googleusercontent.com">
     <title>Bootstrap 101 Template</title>
 
     <!-- Bootstrap -->
+    <script src="https://apis.google.com/js/platform.js" async defer></script>
     <link href="css/bootstrap.min.css" rel="stylesheet">
     <link href="lib/select2-3.5.1/select2.css" rel="stylesheet">
 
@@ -20,12 +23,17 @@
 <nav class="navbar navbar-inverse" role="navigation">
     <div class=" col-md-10 col-sm-10 col-xs-10 ">
         <form class="navbar-form navbar-left"  style="width:100%" role="search">
-            <button type="submit" class="btn btn-link " style="margin:0px,padding:0px"><span class="glyphicon glyphicon-arrow-left "></span> </button>
+            <button type="submit" class="btn btn-link " style="margin:0px;padding:0px"><span class="glyphicon glyphicon-arrow-left "></span> </button>
             <label> <h5 style="color:white"> Add a Training Plan</h5></label>
         </form>
     </div>
 
     <div class=" col-md-2 col-sm-2 col-xs-2 ">
+        <ul id="navbar-list" class="nav navbar-nav pull-right">
+            <li>
+                <div id="google-button" class="g-signin2" data-onsuccess="onSignIn" data-theme="dark"></div>
+            </li>
+        </ul>
         <form class="navbar-form navbar-left"  style="width:100%" role="search">
             <button type="submit" class="btn btn-link"><span class="glyphicon glyphicon-user"></span> </button>
             <button type="submit" class="btn btn-link"> <span class="glyphicon glyphicon-stats"></span> </button>
@@ -184,6 +192,7 @@
 <script>
     $(document).ready(function() { $("#e1").select2(); });
 </script>
+<script src="js/navbarAjax.js"></script>
 <script type="text/javascript" src="/js/addTrainingAJAX.js"></script>
 
 </body>
