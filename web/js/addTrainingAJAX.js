@@ -28,18 +28,38 @@ $('#btn-exercise').click(function() {
     data.s=$('#ex-time-s').val();
     data.row=$('#ex-row').val();
 
-            var row = $('<tr class="valueRow">');
-            row.append($('<td class="valueTitle">').html(data.title));
-            row.append($('<td class="valueDesc">').html(data.desc));
-            row.append($('<td class="valueLength">').html(data.mn+':'+data.s));
-            row.append($('<td class="valueLoop">').html(data.row));
-            row.append($('<td> <button type="submit" class="btn btn-danger btn-sm"> <span class="glyphicon glyphicon-remove"></span> </button></td>'));
+    var row = $('<tr class="valueRow">');
+    row.append($('<td class="valueTitle">').html(data.title));
+    row.append($('<td class="valueDesc">').html(data.desc));
+    row.append($('<td class="valueLength">').html(data.mn+':'+data.s));
+    row.append($('<td class="valueLoop">').html(data.row));
+    row.append($('<td> <button type="submit" class="btn btn-danger btn-sm"> <span class="glyphicon glyphicon-remove"></span> </button></td>'));
 
-            $('#row-exercise').append(row);
+    $('#row-exercise').append(row);
 
-            //TODO
-            //change of total time
-            //$('#totalTimeValue').text()
+    //TODO
+    //change of total time
+    var total = $('#totalTimeValue').text();
+    var split=total.split(":");
+    var hour = split[0];
+    var minute = +split[1] + +data.mn;
+    var sec = +split[2] + +data.s;
+    if (sec>=60) {
+        sec-=60;
+        minute++;
+    }
+    if (minute>=60) {
+        minute-=60;
+        hour++;
+    }
+    if (minute<10) {
+        minute="0"+minute;
+    }
+    if (sec<10) {
+        sec="0"+sec;
+    }
+    $('#totalTimeValue').text(hour+":"+minute+":"+sec);
+
 });
 
 
@@ -49,7 +69,7 @@ $('#trainingSubmit').click(function() {
     data.title=$('#planTitle').val();
     data.desc=$('#planDesc').val();
     data.domain=$('#domain').val();
-    data.totalTime=$('#totalTimeValue').val();
+    console.log($('#totalTimeValue').text());
     data.exercises=[];
 
     $('.valueRow').each(function(i, obj) {
@@ -61,7 +81,6 @@ $('#trainingSubmit').click(function() {
         console.log("Ajout ex :" + exercise);
         data.exercises.push(exercise);
     });
-    console.log(data);
 
     $.ajax
     ({
@@ -70,7 +89,7 @@ $('#trainingSubmit').click(function() {
         type: 'post',
         success: function()
         {
-            alert('ok');
+            alert('Training Plan added !');
         }
     });
 });
