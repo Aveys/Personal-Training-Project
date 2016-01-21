@@ -55,14 +55,14 @@
     </servlet-mapping>
 
 
-    <!--<servlet>
-        <servlet-name>Exercises</servlet-name>
-        <servlet-class>servlet.GetExercisesServlet</servlet-class>
+    <servlet>
+        <servlet-name>TaskQueueServlet</servlet-name>
+        <servlet-class>servlet.TaskQueueServlet</servlet-class>
     </servlet>
     <servlet-mapping>
-        <servlet-name>Exercises</servlet-name>
-        <url-pattern>/getExs</url-pattern>
-    </servlet-mapping>-->
+        <servlet-name>TaskQueueServlet</servlet-name>
+        <url-pattern>/addQueue</url-pattern>
+    </servlet-mapping>
 
 
 

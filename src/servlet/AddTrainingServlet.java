@@ -38,6 +38,7 @@ public class AddTrainingServlet extends HttpServlet {
         plan.setProperty("description", pl.getDesc());
         plan.setProperty("domain", pl.getDomain());
         plan.setProperty("totalLength", pl.getTotalTime());
+        System.out.println(pl.getTotalTime());
 
         Key planKey=datastore.put(plan);
 

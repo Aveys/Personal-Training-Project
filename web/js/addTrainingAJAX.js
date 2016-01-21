@@ -28,18 +28,38 @@ $('#btn-exercise').click(function() {
     data.s=$('#ex-time-s').val();
     data.row=$('#ex-row').val();
 
-            var row = $('<tr class="valueRow">');
-            row.append($('<td class="valueTitle">').html(data.title));
-            row.append($('<td class="valueDesc">').html(data.desc));
-            row.append($('<td class="valueLength">').html(data.mn+':'+data.s));
-            row.append($('<td class="valueLoop">').html(data.row));
-            row.append($('<td> <button type="submit" class="btn btn-danger btn-sm"> <span class="glyphicon glyphicon-remove"></span> </button></td>'));
+    var row = $('<tr class="valueRow">');
+    row.append($('<td class="valueTitle">').html(data.title));
+    row.append($('<td class="valueDesc">').html(data.desc));
+    row.append($('<td class="valueLength">').html(data.mn+':'+data.s));
+    row.append($('<td class="valueLoop">').html(data.row));
+    row.append($('<td> <button type="button" class="btn btn-danger btn-sm delExercise"> <span class="glyphicon glyphicon-remove"></span> </button></td>'));
 
-            $('#row-exercise').append(row);
+    $('#row-exercise').append(row);
 
-            //TODO
-            //change of total time
-            //$('#totalTimeValue').text()
+    //TODO gérer les row (itération d'exo pouir le temps
+    //change of total time
+    var total = $('#totalTimeValue').text();
+    var split=total.split(":");
+    var hour = split[0];
+    var minute = +split[1] + +data.mn;
+    var sec = +split[2] + +data.s;
+    if (sec>=60) {
+        sec-=60;
+        minute++;
+    }
+    if (minute>=60) {
+        minute-=60;
+        hour++;
+    }
+    if (minute<10) {
+        minute="0"+minute;
+    }
+    if (sec<10) {
+        sec="0"+sec;
+    }
+    $('#totalTimeValue').text(hour+":"+minute+":"+sec);
+
 });
 
 
@@ -49,7 +69,7 @@ $('#trainingSubmit').click(function() {
     data.title=$('#planTitle').val();
     data.desc=$('#planDesc').val();
     data.domain=$('#domain').val();
-    data.totalTime=$('#totalTimeValue').val();
+    data.totalTime=moment.duration(($('#totalTimeValue').text())).asSeconds();
     data.exercises=[];
 
     $('.valueRow').each(function(i, obj) {
@@ -61,16 +81,50 @@ $('#trainingSubmit').click(function() {
         console.log("Ajout ex :" + exercise);
         data.exercises.push(exercise);
     });
-    console.log(data);
 
     $.ajax
     ({
-        url: '/addTraining',
+        url: '/addQueue',
         data: {"PARAM":JSON.stringify(data)},
         type: 'post',
         success: function()
         {
-            alert('ok');
+            alert('Training Plan added !');
+            window.location.reload(true);
         }
     });
+});
+
+
+
+//Delete row table exercise
+$("#row-exercise").on("click", ".delExercise", function () {
+    var length = $(this).parent().parent().find(".valueLength").html();
+    $(this).parent().parent().remove();
+
+    //TODO gérer les row (itération d'exo pouir le temps
+
+    var total=$('#totalTimeValue').text();
+    //change of totalTimeValue
+    var lengthSplit=length.split(":");
+    var totalSplit=total.split(":");
+
+    var hour = totalSplit[0];
+    var minute = +totalSplit[1] - +lengthSplit[0];
+    var sec = +totalSplit[2] - +lengthSplit[1];
+    if (sec<0) {
+        sec+=60;
+        minute--;
+    }
+    if (minute<0) {
+        minute+=60;
+        hour--;
+    }
+    if (minute<10) {
+        minute="0"+minute;
+    }
+    if (sec<10) {
+        sec="0"+sec;
+    }
+    $('#totalTimeValue').text(hour+":"+minute+":"+sec);
 });

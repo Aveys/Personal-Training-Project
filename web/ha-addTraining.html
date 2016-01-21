@@ -35,13 +35,13 @@
             </li>
         </ul>
         <form class="navbar-form navbar-left"  style="width:100%" role="search">
-            <button type="submit" class="btn btn-link"><span class="glyphicon glyphicon-user"></span> </button>
-            <button type="submit" class="btn btn-link"> <span class="glyphicon glyphicon-stats"></span> </button>
+            <button type="button" class="btn btn-link"><span class="glyphicon glyphicon-user"></span> </button>
+            <button type="button" class="btn btn-link"> <span class="glyphicon glyphicon-stats"></span> </button>
         </form>
     </div>
 </nav>
 <!-- ------------------------------------------- HEADER ZONE END ------------------------------------------- -->
-
+<form action="">
     <div class="row" style="margin-bottom:10px">
         <div class=" col-md-1 col-sm-0 col-xs-0 " ></div>
         <div class=" col-md-2 col-sm-2 col-xs-12 ">
@@ -167,11 +167,11 @@
     <div class=" col-md-2 ol-sm-0 col-xs-0 " ></div>
     <div class=" col-md-10 ol-sm-5 col-xs-0 " ></div>
     <div class=" col-md-2 ol-sm-5 col-xs-12 text-center" >
-        <button class="btn btn-danger btn-sm"> <span class="glyphicon glyphicon-remove"></span> </button>
-        <button id="trainingSubmit" class="btn btn-success btn-lg"> <span class="glyphicon glyphicon-ok"></span> </button>
+        <button type="submit" class="btn btn-danger btn-sm"> <span class="glyphicon glyphicon-remove"></span> </button>
+        <button type="button" id="trainingSubmit" class="btn btn-success btn-lg"> <span class="glyphicon glyphicon-ok"></span> </button>
     </div>
 
-
+</form>
 
 <!-- ------------------------------------------- FOOTER ZONE ------------------------------------------- -->
 <!-- <nav class="navbar navbar-inverse navbar-fixed-bottom" role="navigation">
@@ -192,8 +192,10 @@
 <script>
     $(document).ready(function() { $("#e1").select2(); });
 </script>
+<script src="js/moment.min.js"></script>
 <script src="js/navbarAjax.js"></script>
 <script type="text/javascript" src="/js/addTrainingAJAX.js"></script>
+
 
 </body>
 </html>
