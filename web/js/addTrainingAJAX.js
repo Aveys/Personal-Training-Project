@@ -69,7 +69,7 @@ $('#trainingSubmit').click(function() {
     data.title=$('#planTitle').val();
     data.desc=$('#planDesc').val();
     data.domain=$('#domain').val();
-    console.log($('#totalTimeValue').text());
+    data.totalTime=moment.duration(($('#totalTimeValue').text())).asSeconds();
     data.exercises=[];
 
     $('.valueRow').each(function(i, obj) {
@@ -84,7 +84,7 @@ $('#trainingSubmit').click(function() {
 
     $.ajax
     ({
-        url: '/addTraining',
+        url: '/addQueue',
         data: {"PARAM":JSON.stringify(data)},
         type: 'post',
         success: function()
