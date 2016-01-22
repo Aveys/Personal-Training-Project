@@ -64,6 +64,15 @@
         <url-pattern>/addQueue</url-pattern>
     </servlet-mapping>
 
+    <servlet>
+        <servlet-name>GetUserPlansServlet</servlet-name>
+        <servlet-class>servlet.GetUserPlansServlet</servlet-class>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>GetUserPlansServlet</servlet-name>
+        <url-pattern>/getUserPlans</url-pattern>
+    </servlet-mapping>
+
 
 
 </web-app>

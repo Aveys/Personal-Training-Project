@@ -76,14 +76,11 @@ $('#trainingSubmit').click(function() {
         success: function(result)
         {
             var data={};
-            data.email=result.mail;
-            data.plans=[];
-            var plan={};
-            plan.title=$('#planTitle').val();
-            plan.desc=$('#planDesc').val();
-            plan.domain=$('#domain').val();
-            plan.totalTime=moment.duration(($('#totalTimeValue').text())).asSeconds();
-            plan.exercises=[];
+            data.title=$('#planTitle').val();
+            data.desc=$('#planDesc').val();
+            data.domain=$('#domain').val();
+            data.totalTime=moment.duration(($('#totalTimeValue').text())).asSeconds();
+            data.exercises=[];
 
             $('.valueRow').each(function(i, obj) {
                 var exercise = {};
@@ -92,11 +89,8 @@ $('#trainingSubmit').click(function() {
                 exercise.length = $(this).find(".valueLength").html();
                 exercise.row = $(this).find(".valueLoop").html();
                 console.log("Ajout ex :" + exercise);
-                plan.exercises.push(exercise);
+                data.exercises.push(exercise);
             });
-            data.plans.push(plan);
-
-            console.log(data);
 
             $.ajax
             ({
