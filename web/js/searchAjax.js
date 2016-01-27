@@ -4,11 +4,16 @@
 $(document).ready(function () {
     var searchTerms = QueryString.q;
     $.get("/search",{"search":searchTerms}, function (data) {
+        console.log("Searchresult :"+JSON.stringify(data));
         _.each(data.trainings, function (item) {
-            $('.training-items').append(generatePEHTML("training",item.key.id,item.propertyMap.title,item.propertyMap.totalLength));
+            console.log('item training'+JSON.stringify(item));
+            content = JSON.parse(item.content);
+            $('.training-items').append(generatePEHTML("training",item.key,content.propertyMap.title,content.propertyMap.totalLength));
         });
         _.each(data.exercises, function (item) {
-            $('.exercise-items').append(generatePEHTML("exercise",item.key.parentKey.id,item.propertyMap.title,item.propertyMap.length));
+            console.log('item exercises'+JSON.stringify(item));
+            content = JSON.parse(item.content);
+            $('.exercise-items').append(generatePEHTML("exercise",item.key,content.propertyMap.title,content.propertyMap.length));
         });
     });
     $.get("/rss", function (data) {

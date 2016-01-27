@@ -1,7 +1,6 @@
 package servlet;
 
 import com.google.appengine.api.datastore.*;
-import com.google.appengine.repackaged.com.google.common.escape.ArrayBasedCharEscaper;
 import com.google.gson.Gson;
 
 import javax.servlet.ServletException;
@@ -19,7 +18,6 @@ public class SearchServlet extends HttpServlet {
 	protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
 
 		String searchTerms = req.getParameter("search");
-
 		if (searchTerms != null && !searchTerms.isEmpty()) {
 			if (searchTerms.contains("+"))
 				searchTerms = searchTerms.replace('+', ' ');
@@ -29,12 +27,27 @@ public class SearchServlet extends HttpServlet {
 			Query plan = new Query("Plan").setFilter(filter);
 			Query exercise = new Query("Exercise").setFilter(filter);
 			Gson gson = new Gson();
-			List<Entity> trainings = datastore.prepare(plan).asList(FetchOptions.Builder.withLimit(10));
-			List<Entity> exercises = datastore.prepare(exercise).asList(FetchOptions.Builder.withLimit(10));
-			Map<String, List<Entity>> list = new HashMap<>();
+			List<HashMap<String,String>> trainings = new ArrayList<>();
+			List<Entity> trainingsRaw = datastore.prepare(plan).asList(FetchOptions.Builder.withLimit(10));
+			for (Entity e : trainingsRaw){
+				HashMap<String,String> t = new HashMap<>();
+
+				t.put("key",KeyFactory.keyToString(e.getKey()));
+				t.put("content",gson.toJson(e));
+				trainings.add(t);
+			}
+			List<HashMap<String,String>> exercises = new ArrayList<>();
+			List<Entity> exercisesRaw = datastore.prepare(exercise).asList(FetchOptions.Builder.withLimit(10));
+			for (Entity e : exercisesRaw){
+				HashMap<String,String> t = new HashMap<>();
+				t.put("key",KeyFactory.keyToString(e.getParent()));
+				t.put("content",gson.toJson(e));
+				exercises.add(t);
+			}
+			Map<String,List> list = new HashMap<>();
 			list.put("trainings", trainings);
 			list.put("exercises", exercises);
-			System.out.println("object sent :" + list.toString());
+			System.out.println("object sent :" + gson.toJson(list));
 			resp.setHeader("Content-Type", "application/json");
 			resp.getWriter().write(gson.toJson(list));
 		}

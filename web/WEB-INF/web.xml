@@ -53,8 +53,6 @@
         <servlet-name>RSSReaderServlet</servlet-name>
         <url-pattern>/rss</url-pattern>
     </servlet-mapping>
-
-
     <servlet>
         <servlet-name>TaskQueueServlet</servlet-name>
         <servlet-class>servlet.TaskQueueServlet</servlet-class>
@@ -63,14 +61,22 @@
         <servlet-name>TaskQueueServlet</servlet-name>
         <url-pattern>/addQueue</url-pattern>
     </servlet-mapping>
-
     <servlet>
-        <servlet-name>GetUserPlansServlet</servlet-name>
-        <servlet-class>servlet.GetUserPlansServlet</servlet-class>
+        <servlet-name>PlanServlet</servlet-name>
+        <servlet-class>servlet.PlanServlet</servlet-class>
     </servlet>
     <servlet-mapping>
-        <servlet-name>GetUserPlansServlet</servlet-name>
-        <url-pattern>/getUserPlans</url-pattern>
+        <servlet-name>PlanServlet</servlet-name>
+        <url-pattern>/plan</url-pattern>
+    </servlet-mapping>
+
+    <servlet>
+        <servlet-name>UserPlansServlet</servlet-name>
+        <servlet-class>servlet.UserPlansServlet</servlet-class>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>UserPlansServlet</servlet-name>
+        <url-pattern>/userPlans</url-pattern>
     </servlet-mapping>
 
 

@@ -16,7 +16,7 @@ import java.util.Map;
 /**
  * Created by Max TOMPOUCE on 22/01/2016.
  */
-public class GetUserPlansServlet extends HttpServlet {
+public class UserPlansServlet extends HttpServlet {
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 
     }

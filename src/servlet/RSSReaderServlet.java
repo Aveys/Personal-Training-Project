@@ -22,7 +22,7 @@ import java.net.URL;
 public class RSSReaderServlet extends HttpServlet {
 
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		System.out.println("test");
+		//System.out.println("test");
 		String rssDoc = "";
 		try {
 			URL url = new URL("http://feeds.bbci.co.uk/sport/rss.xml");
@@ -34,7 +34,7 @@ public class RSSReaderServlet extends HttpServlet {
 			}
 			reader.close();
 
-			System.out.println(rssDoc);
+			//System.out.println(rssDoc);
 
 			JsonParser parser = new JsonParser();
 			JsonObject rss = parser.parse( XML.toJSONObject(rssDoc).getJSONObject("rss").toString()).getAsJsonObject();
@@ -57,7 +57,7 @@ public class RSSReaderServlet extends HttpServlet {
 			}
 
 			jsonRss += "]}";
-			System.out.println(jsonRss);
+			//System.out.println(jsonRss);
 			response.setHeader("Content-Type","application/json");
 			response.getWriter().write(jsonRss);
 			//System.out.println(item.toString());
