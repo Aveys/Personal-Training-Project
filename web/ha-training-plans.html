@@ -4,7 +4,11 @@
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>Bootstrap 101 Template</title>
+    <meta name="google-signin-scope" content="profile email">
+    <meta name="google-signin-client_id"
+          content="418187800373-a5n7urf2liqa6uahdadtj75oq5k2q3up.apps.googleusercontent.com">
+
+    <title>User profile</title>
 
     <!-- Bootstrap -->
     <link href="css/bootstrap.min.css" rel="stylesheet">
@@ -12,7 +16,7 @@
     <link rel="stylesheet" href="lib/flipcountdown-master/jquery.flipcountdown.css">
 
     <link href="css/js.css" rel="stylesheet">
-
+    <script src="https://apis.google.com/js/platform.js" async defer></script>
 
 </head>
 <body>
@@ -20,35 +24,43 @@
 <!-- ------------------------------------------- HEADER ZONE ------------------------------------------- -->
 <nav class="navbar navbar-inverse" role="navigation">
     <div class=" col-md-10 col-sm-10 col-xs-10 ">
-        <form class="navbar-form navbar-left"  style="width:100%" role="search">
-            <button type="submit" class="btn btn-link " style="margin:0px;padding:0px"><span class="glyphicon glyphicon-arrow-left "></span> </button>
-            <label> <h5 style="color:white"> Add a Training Plan</h5></label>
+        <form class="navbar-form navbar-left" style="width:100%" role="search">
+            <a href="ha-search-screen.html" class="btn btn-link " style="margin:0px;padding:0px"><span
+                    class="glyphicon glyphicon-arrow-left "></span></a>
+            <label><h5 style="color:white"> Back to search</h5></label>
         </form>
     </div>
 
     <div class=" col-md-2 col-sm-2 col-xs-2 ">
-        <ul id="navbar-list" class="nav navbar-nav pull-right">
-            <li>
-                <div id="google-button" class="g-signin2" data-onsuccess="onSignIn" data-theme="dark"></div>
-            </li>
-        </ul>
-        <form class="navbar-form navbar-left"  style="width:100%" role="search">
-            <button type="button" class="btn btn-link"><span class="glyphicon glyphicon-user"></span> </button>
-            <button type="button" class="btn btn-link"> <span class="glyphicon glyphicon-stats"></span> </button>
+
+        <form class="navbar-form navbar-left" style="width:100%" role="search">
+            <ul id="navbar-list" class="nav navbar-nav pull-right">
+                <li>
+                    <div id="google-button" class="g-signin2" data-onsuccess="onSignIn" data-theme="dark"></div>
+                </li>
+            </ul>
+            <button type="button" class="btn btn-link"><span class="glyphicon glyphicon-stats"></span></button>
         </form>
     </div>
 </nav>
 <!-- ------------------------------------------- HEADER ZONE END ------------------------------------------- -->
 
 <!-- Zone a remplir via ajax document rdy -->
-<table id="tablePlans">
-    <tr>
-        <td>Date</td>
-        <td>Training Plan</td>
-        <td>Expected Time</td>
-        <td>Completed</td>
-    </tr>
-</table>
+<div class=" col-md-12 col-sm-12 col-xs-12 " style="margin-bottom:40px">
+    <table id="tablePlans" class="table table-bordered">
+        <thead>
+        <tr>
+            <th>Date</th>
+            <th>Training Plan</th>
+            <th>Exercise name</th>
+            <th>status</th>
+        </tr>
+        </thead>
+        <tbody>
+
+        </tbody>
+    </table>
+</div>
 
 
 <!-- ------------------------------------------- FOOTER ZONE ------------------------------------------- -->
@@ -66,6 +78,8 @@
 <script src="js/jquery-1.11.1.min.js"></script>
 <!-- Include all compiled plugins (below), or include individual files as needed -->
 <script src="js/bootstrap.min.js"></script>
+<script src="js/underscore.min.js"></script>
+<script src="js/navbarAjax.js"></script>
 <script src="js/userPlansAjax.js"></script>
 
 </body>

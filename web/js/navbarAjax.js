@@ -21,7 +21,7 @@ function onSignIn(googleUser) {
         success: function(result)
         {
             $('#google-button').hide();
-            $('#navbar-list').append("<li><a href=\" \">Welcome "+result.name+"<br/>"+result.mail+"</a></li>");
+            $('#navbar-list').append("<li><a href=\"ha-training-plans.html\">Welcome "+result.name+"<br/><div id='user-mail'>"+result.mail+"</div></a></li>");
         },
         error: function () {
             alert("Token Invalid");
