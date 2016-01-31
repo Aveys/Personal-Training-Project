@@ -5,6 +5,10 @@ Projet en groupe de 2
 * Maxime Cocquempot
 * Arthur Veys
 
+## Librairies Supplémentaires
+* Google API
+* Jackson JSON
+
 ## Tâches réalisées
 * Splashscreen dans le datastore et dans le memcache (**Arthur**)
 * Ajout d'un plan d'entrainement avec gestion de Queue(**Maxime**)
