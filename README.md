@@ -35,5 +35,4 @@ http://personal-training-project.appspot.com/
 * Certaines requêtes AJAX peuvent mettre du temps à s'effectuer car il faut parfois attendre le chargememnt des librairies Google
 
 ##  Schéma d'architecture
-
-TODO
+![Texte](https://raw.githubusercontent.com/Aveys/Personal-Training-Project/master/Sch%C3%A9ma%20fonctionnel/Slide1.jpg)
