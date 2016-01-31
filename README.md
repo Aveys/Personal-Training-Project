@@ -17,6 +17,7 @@ Projet en groupe de 2
 
 ## Tâches non réalisées
 * Gerer le timer durant l'éxécution des exercices
+* Recherche par domaine
 * Page de statistiques
 * Chat avec un Coach
 
@@ -26,6 +27,7 @@ http://personal-training-project.appspot.com/
 ## Commentaire
 * **attention**, la recherche est aboslue : il faut rentrer exactement le nom du plan ou de l'exercice pour le trouver.
   C'est une limitation de la recherche de Google App Engine qui n'a pas d'opérateur LIKE pour le datastore. il aurait fallu utiliser un document search)
+* Les validations des auth token de Google se font coté serveur avec la librairie Google adaptée 
 * Certaines requêtes AJAX peuvent mettre du temps à s'effectuer car il faut parfois attendre le chargememnt des librairies Google
 
 ##  Schéma d'architecture

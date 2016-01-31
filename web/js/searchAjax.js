@@ -21,6 +21,29 @@ $(document).ready(function () {
             $('.rss-items').append(generateRSSHTML(item.title,item.description,item.link));
         });
 
+    });
+    $('#search-form').submit(function (e) {
+        e.preventDefault();
+        if(id_token==null){
+            alert("you have to be logged in to use the search form");
+        }
+        else{
+            data = {};
+            data.tokenID=id_token;
+            $.ajax
+            ({
+                url: '/tokenVerifier',
+                data: data,
+                type: 'post',
+                success: function(result)
+                {
+                    window.location.href="ha-result-screen.html?q="+$("#search-field").val();
+                },
+                error: function () {
+                    alert("Token Invalid");
+                }
+            });
+        }
     })
 });
 
@@ -53,3 +76,5 @@ function generatePEHTML(type,id,title,length){
 function generateRSSHTML(title,content,url){
     return '<div class="rss-item"><h4>'+title+'</h4><p>'+content+'</p><p><a href="'+url+'">'+url+'</a></p></div>';
 }
+
+$
