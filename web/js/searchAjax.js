@@ -3,17 +3,17 @@
  */
 $(document).ready(function () {
     var searchTerms = QueryString.q;
-    $.get("/search",{"search":searchTerms}, function (data) {
+    $.get("/search",{"search":searchTerms,"tokenID":id_token}, function (data) {
         console.log("Searchresult :"+JSON.stringify(data));
         _.each(data.trainings, function (item) {
             console.log('item training'+JSON.stringify(item));
             content = JSON.parse(item.content);
-            $('.training-items').append(generatePEHTML("training",item.key,content.propertyMap.title,content.propertyMap.totalLength));
+            $('.training-items').append(generatePEHTML("training",item.key,content.propertyMap.title,parseInt(content.propertyMap.totalLength)));
         });
         _.each(data.exercises, function (item) {
             console.log('item exercises'+JSON.stringify(item));
             content = JSON.parse(item.content);
-            $('.exercise-items').append(generatePEHTML("exercise",item.key,content.propertyMap.title,content.propertyMap.length));
+            $('.exercise-items').append(generatePEHTML("exercise",item.key,content.propertyMap.title,parseInt(content.propertyMap.length)));
         });
     });
     $.get("/rss", function (data) {
@@ -48,7 +48,7 @@ var QueryString = function () {
 }();
 
 function generatePEHTML(type,id,title,length){
-    return '<div class="'+type+'-item"><div class=" col-md-6 col-sm-6 col-xs-6"><a href="ha-result-detail-screen.html?keyid='+id+'" class="btn btn-link">'+title+'</a></div><div class=" col-md-6 col-sm-6 col-xs-6"> <label class="btn"> <span class="glyphicon glyphicon-time"></span> '+length+' min. </label></div></div>';
+    return '<div class="'+type+'-item"><div class=" col-md-6 col-sm-6 col-xs-6"><a href="ha-result-detail-screen.html?keyid='+id+'" class="btn btn-link">'+title+'</a></div><div class=" col-md-6 col-sm-6 col-xs-6"> <label class="btn"> <span class="glyphicon glyphicon-time"></span> '+moment.duration(length,"seconds").humanize()+' . </label></div></div>';
 }
 function generateRSSHTML(title,content,url){
     return '<div class="rss-item"><h4>'+title+'</h4><p>'+content+'</p><p><a href="'+url+'">'+url+'</a></p></div>';

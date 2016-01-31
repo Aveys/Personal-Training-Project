@@ -7,17 +7,15 @@ Projet en groupe de 2
 
 ## Tâches réalisées
 * Splashscreen dans le datastore et dans le memcache (**Arthur**)
-* Ajout d'un plan d'entrainement (**Maxime**)
-* Recherche (attention, c'est une recherche aboslue : il faut rentrer exactement le nom du plan ou de l'exercice pour le trouver.
-C'est une limitation de la recherche de Google App Engine qui n'a pas d'opérateur LIKE) (**Arthur**)
+* Ajout d'un plan d'entrainement avec gestion de Queue(**Maxime**)
+* Recherche (**Arthur**)
 * Affichage du flux RSS de la section sport de la BBC dans la recherche (**Arthur**)
 * Affichage des exercices d'un plan recherché (**Arthur**)
 * Authentification avec google (**Arthur**)
 * Affichage des exercices effectué par un utilisateur (page personnelle) (**Maxime**)
-* Enregistrement de la reussite ou l'échec d'un exercise dans le datastore (**Maxime**)
+* Enregistrement de la reussite ou l'échec d'un exercice dans le datastore (**Maxime**)
 
 ## Tâches non réalisées
-* Gestion de l'enchainement des exercices (ne pas faire le second sans avoir reussi le premier)
 * Gerer le timer durant l'éxécution des exercices
 * Page de statistiques
 * Chat avec un Coach
@@ -26,7 +24,9 @@ C'est une limitation de la recherche de Google App Engine qui n'a pas d'opérate
 http://personal-training-project.appspot.com/
 
 ## Commentaire
-RAS
+* **attention**, la recherche est aboslue : il faut rentrer exactement le nom du plan ou de l'exercice pour le trouver.
+  C'est une limitation de la recherche de Google App Engine qui n'a pas d'opérateur LIKE pour le datastore. il aurait fallu utiliser un document search)
+* Certaines requêtes AJAX peuvent mettre du temps à s'effectuer car il faut parfois attendre le chargememnt des librairies Google
 
 ##  Schéma d'architecture
 
